@@ -23,6 +23,20 @@ install_github("jfmeadow/dualingTrees-pkg", subdir="dualingTrees")
 
 #### Workflow: 
 
+You will need at least 3 objects to generate a figure: 
+
+* `x_tree`: a phylo object (see the ape package) for the tree that goes on the top axis. 
+* `y_tree`: a phylo object (see the ape package) for the tree that goes on the left axis. 
+* And a 3-column data.frame consisting of: 
+  * `x_key`: names of organisms that match the tips of the `x_tree`. 
+  * `y_key`: names of organisms that match the tips of the `y_tree`. 
+  * `response`: the effect size or any other numeric interaction value to be displayed on the figure. These can be many replicate measures (to be averaged for each bubble size) or a single response value for each interaction combination (which would directly be plotted as a bubble). 
+  * Optionally, you can supply a categorical variable indicating the interaction type `response_type`. This will be used to color tree tips. Currently only 2 categories are allowed, with a third `both` category created on the fly when a single combination appears in two categories. 
+  
+All other options are documented in the help files. 
+
+
+
 The package consists of 2 main functions that must be run in series, as well as a few internal ancillary functions. The typical workflow might look like this: 
 
 ```
@@ -69,6 +83,10 @@ Here is another example, slightly more complex:
 
 
 ```
+data(fungal_tree)
+data(plant_tree)
+data(mycor_ei)
+
 trees_list <- 
   input_trees(
     x_tree = fungal_tree,
