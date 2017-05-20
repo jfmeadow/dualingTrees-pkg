@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\\name{fungal_tree}\n\\alias{fungal_tree}\n\\title{fungal_tree}\n\\usage{\ndata(fungal_tree)\n}\n\\description{\nExample phylogenetic tree. The data come from the MycoDB project (Chaudhary et al., 2016; https://www.nature.com/articles/sdata201628). The tree is a result of phylogenetic reconstruction of all fungal species included in a meta-analysis that utilized a huge collection of controlled mycorrhizal interaction studies.\n\n}\n\\examples{\ndata(fungal_tree)\n\n}\n",
+    "created" : 1494978229247.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "624928419",
+    "id" : "205A1C1C",
+    "lastKnownWriteTime" : 1495259940,
+    "last_content_update" : 1495259940987,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/man/fungal_tree.Rd",
+    "project_path" : "man/fungal_tree.Rd",
+    "properties" : {
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

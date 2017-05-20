@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\\name{rand_string}\n\\alias{rand_string}\n\\title{rand_string}\n\\usage{\nrand_string(n = 1, len = 12)\n}\n\\arguments{\n\\item{n}{number of strings to generate.}\n\\item{len}{ length of each string  }\n}\n\n\\description{\nInternal testing function for dualingTrees package. Not intended to be called directly.\n}\n\\examples{\nrand_string(10)\n}\n",
+    "created" : 1494055134376.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3213589057",
+    "id" : "FEB53D5D",
+    "lastKnownWriteTime" : 1495261378,
+    "last_content_update" : 1495261378338,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/man/rand_string.Rd",
+    "project_path" : "man/rand_string.Rd",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

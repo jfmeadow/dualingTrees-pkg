@@ -1,0 +1,17 @@
+Package: dualingTrees
+Type: Package
+Title: Visualize phylogenetic interactions
+Version: 0.1.0
+Author: James Meadow
+Maintainer: James Meadow <jfmeadow@gmail.com>
+Description: When two phylogenies have complex sets of well-studied interactions, one has an impulse to visualize these interactions. This package is designed to do just that. Two dualing phylogenetic trees are plotted on the margins of an interaction matrix, and the interactions are visualized with colored bubbles in the matrix. Barplots summarize the matrix margins on the sides opposite of the trees. A thing of beauty, really. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  magrittr, 
+  dplyr, 
+  ape, 
+  graphics, 
+  grDevices, 
+  scales

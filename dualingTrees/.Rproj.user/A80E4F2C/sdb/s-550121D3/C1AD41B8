@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## Modified prune.sample function from picante\n## This version takes vector instead of comm matrix\nprune_sample <- function (vect, phylo) {\n  treeTaxa <- phylo$tip.label\n  sampleTaxa <- vect\n  trimTaxa <- dplyr::setdiff(treeTaxa, sampleTaxa)\n  if (length(trimTaxa) > 0)\n    ape::drop.tip(phylo, trimTaxa)\n  else phylo\n}\n",
+    "created" : 1494055397626.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2704929935",
+    "id" : "C1AD41B8",
+    "lastKnownWriteTime" : 1494052878,
+    "last_content_update" : 1494052878,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/R/prune_sample.R",
+    "project_path" : "R/prune_sample.R",
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

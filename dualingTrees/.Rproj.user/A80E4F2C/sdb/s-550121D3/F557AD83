@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\\name{simple_cap}\n\\alias{simple_cap}\n\\title{simple_cap}\n\\usage{\nsimple_cap(x)\n}\n\n\\arguments{\n\n  \\item{x}{ a string to be capitalized. 'xx' becomes 'Xx', and 'xx_xx' becomes 'Xx_xx'. This is intended to capitalize words for genus+species format.  }\n}\n\n\\description{\nInternal function called by the dualingTrees package. Not intended to be called directly.\n\n}\n\\examples{\nsimple_cap('test')\n}\n",
+    "created" : 1494055136570.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3170258116",
+    "id" : "F557AD83",
+    "lastKnownWriteTime" : 1495261332,
+    "last_content_update" : 1495261332090,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/man/simple_cap.Rd",
+    "project_path" : "man/simple_cap.Rd",
+    "properties" : {
+    },
+    "relative_order" : 16,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

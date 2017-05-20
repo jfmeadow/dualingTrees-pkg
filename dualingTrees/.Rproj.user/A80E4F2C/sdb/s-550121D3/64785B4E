@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\\name{fungal_tree_blup}\n\\alias{fungal_tree_blup}\n\\title{fungal_tree_blup}\n\\usage{\ndata(fungal_tree_blup)\n}\n\\description{\nEctomycorrhizal fungi. The publication reporting these data in detail is forthcoming. The data come from the MycoDB project (Chaudhary et al., 2016; https://www.nature.com/articles/sdata201628).\n}\n\\examples{\ndata(fungal_tree_blup)\n\n}\n",
+    "created" : 1494978229252.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3374088996",
+    "id" : "64785B4E",
+    "lastKnownWriteTime" : 1495260050,
+    "last_content_update" : 1495260050133,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/man/fungal_tree_blup.Rd",
+    "project_path" : "man/fungal_tree_blup.Rd",
+    "properties" : {
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}

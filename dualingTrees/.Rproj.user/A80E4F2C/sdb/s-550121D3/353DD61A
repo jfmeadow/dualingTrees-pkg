@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\\name{plot_trees}\n\\alias{plot_trees}\n\\title{plot_trees}\n\n\\description{The plotting function. }\n\n\\usage{\nplot_trees(trees_list,\n           pn_cols = c('cornflowerblue', 'tomato'),\n           x_tree_col = 'gray30',\n           y_tree_col = 'gray30',\n           x_type_cols = 'gray30',\n           y_type_cols = 'gray30',\n           x_bar_axis_offset = 0,\n           y_bar_axis_offset = 0,\n           pdf_filename = NULL,\n           png_filename = NULL,\n           w_inches = 11,\n           h_inches = 11)\n\n}\n\n\n\\arguments{\n\\item{trees_list}{Output from \\code{input_trees()}. The list contains all elements that will go into the plot except options chosen in this plotting function. }\n\\item{pn_cols}{Colors for positive/negative values. The same colors are used for bubbles and margin barplots. Default colors are blue and red.  }\n\\item{x_tree_col}{Color of the tree edges. Either supply a single color or a vector of colors that correspond to the edges in the tree. }\n\\item{y_tree_col}{Color of the tree edges. Either supply a single color or a vector of colors that correspond to the edges in the tree. }\n\\item{x_type_cols}{Colors for the short bars at the tree tips. The types correspond to \\code{response_type} entered in the \\code{input_trees} function. This function will return color choices just to make sure they line up as you expected. }\n\\item{y_type_cols}{Colors for the short bars at the tree tips. The types correspond to \\code{response_type} entered in the \\code{input_trees} function. This function will return color choices just to make sure they line up as you expected. }\n\\item{x_bar_axis_offset}{ How far offet should the axis be from the edge of the barplot? }\n\\item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }\n\\item{pdf_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }\n\\item{png_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }\n\\item{w_inches}{Default = 11. Used for both pdf and png creation. }\n\\item{h_inches}{Default = 11. Used for both pdf and png creation.}\n\n}\n\n\\examples{\n\\dontrun{\ntrees_list <- input_trees(x_tree = fungal_tree,\n                          y_tree = plant_tree,\n                          x_key = mycor_ei$fungal_name,\n                          y_key = mycor_ei$plant_name,\n                          response = mycor_ei$ei,\n                          response_type = mycor_ei$mycorrhizae_type,\n                          y_lab_cutoff = 1.4,\n                          y_node_labs = c('fabaceae', 'betulaceae',\n                                          'rosaceae', 'myrtaceae',\n                                          'asteraceae', 'poaceae',\n                                          'pinaceae'))\n\n##############################################################\n\nx_tree_cols <- rep('gray40', length(trees_list$x_tree$edge.length))\nx_tree_cols[1:65] <- '#b154a0'\nx_tree_cols[66:94] <- '#51ad4f'\n\n##############################################################\n\nplot_trees(trees_list = trees_list,\n           x_tree_col = x_tree_cols,\n           x_type_cols = c('#51ad4f', '#b154a0'),\n           y_type_cols = c('#51ad4f', '#b154a0', '#5a1b1a'))\n\n}\n}\n",
+    "created" : 1494055848005.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "816363932",
+    "id" : "353DD61A",
+    "lastKnownWriteTime" : 1495262843,
+    "last_content_update" : 1495262843138,
+    "path" : "~/Dropbox (Personal)/R_stuff/dualingTrees-pkg/dualingTrees/man/plot_trees.Rd",
+    "project_path" : "man/plot_trees.Rd",
+    "properties" : {
+    },
+    "relative_order" : 18,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_doc"
+}
