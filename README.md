@@ -41,7 +41,7 @@ plot_trees(
   y_bar_axis_offset = .6, 
   x_space = .3, 
   y_space = .5, 
-  pdf_filename = 'blup_trees.pdf', 
+  png_filename = 'blup_trees.png', 
   w_inches = 8, 
   h_inches = 8, 
   leg_text_pos = .6)
@@ -50,7 +50,7 @@ plot_trees(
 
 Which results in this figure: 
 
-![](examples/blup_trees.pdf)
+![](examples/blup_trees.png)
 
 
 Here is another example, slightly more complex: 
@@ -87,14 +87,14 @@ plot_trees(
   y_type_cols = c('#51ad4f', '#b154a0', '#5a1b1a'),
   x_bar_axis_offset = .5, 
   y_bar_axis_offset = .5, 
-  pdf_filename = 'ei_tree.pdf', 
+  png_filename = 'ei_tree.png', 
   leg_text_pos = .4)
   
 ```
 
 And the result: 
 
-![](examples/ei_tree.pdf)
+![](examples/ei_tree.png)
 
 
 
