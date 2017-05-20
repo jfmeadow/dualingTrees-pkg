@@ -11,6 +11,18 @@ This package is designed to produce one type of visualization: phylogenetic effe
 
 The work arose from a long-term MycoDB collaboration announced by Chaudhary et al. (2016; https://www.nature.com/articles/sdata201628). Additional publications are forthcoming, including publications surrounding the data used for examples within this package. 
 
+
+#### Installation: 
+
+Currently only housed on GitHub, so you can install using `devtools`: 
+
+```
+library(devtools)
+install_github("jfmeadow/dualingTrees-pkg", subdir="dualingTrees")
+```
+
+#### Workflow: 
+
 The package consists of 2 main functions that must be run in series, as well as a few internal ancillary functions. The typical workflow might look like this: 
 
 ```
