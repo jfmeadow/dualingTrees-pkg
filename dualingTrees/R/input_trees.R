@@ -15,6 +15,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
                         bubble_scale = 5,     # multiplier for bubble size
                         bubble_transform = NULL) {     # select tranformation for bubble scaling
 
+  ## stupid cran hack.
+  . <- combo <- ave_resp <- NULL
+
   ## How many tips and how big is interaction matrix
   ny <- length(y_tree$tip.label)
   nx <- length(x_tree$tip.label)
@@ -91,7 +94,11 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
       log %>% tr %>%
       magrittr::multiply_by(bubble_scale)
   }
-
+  if(max(mat_cex) < 2) {
+    cat('\nThe bubbles are going to be really small.\n',
+        'Consider increasing bubble_scale or\n',
+        'choosing a different bubble_transform.')
+  }
   ## Positive or negetive for plotting.
   ## set up test? Maybe not necessary
   mat_pn <- mat
@@ -131,9 +138,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
     dplyr::mutate(
       ave_resp_abs = abs(ave_resp),
       y_pn = dplyr::case_when(
-        ave_resp > 0 ~ 1,
-        ave_resp < 0 ~ -1,
-        ave_resp == 0 ~ 0)) %>%
+        .$ave_resp > 0 ~ 1,
+        .$ave_resp < 0 ~ -1,
+        .$ave_resp == 0 ~ 0)) %>%
     magrittr::set_rownames(.[, 1])
 
   ## get abs and pn for optional bar response
@@ -181,9 +188,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
     dplyr::mutate(
       ave_resp_abs = abs(ave_resp),
       x_pn = dplyr::case_when(
-        ave_resp > 0 ~ 1,
-        ave_resp < 0 ~ -1,
-        ave_resp == 0 ~ 0)) %>%
+        .$ave_resp > 0 ~ 1,
+        .$ave_resp < 0 ~ -1,
+        .$ave_resp == 0 ~ 0)) %>%
     magrittr::set_rownames(.[, 1])
 
   ## get abs and pn for optional bar response

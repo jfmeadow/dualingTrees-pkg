@@ -14,11 +14,16 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                        y_type_cols = 'gray30',      # vector of length types. see output from input function
                        x_bar_axis_offset = 0,
                        y_bar_axis_offset = 0,
+                       x_space = 0,
+                       y_space = 0,
                        pdf_filename = NULL,     # pdf_filename = 'test.pdf'
                        png_filename = NULL,     # png_filename = 'test.png'
                        w_inches = 11,
-                       h_inches = 11) {
+                       h_inches = 11,
+                       leg_text_pos = .5) {
 
+  ## stupid cran hack.
+  . <- NULL
 
   # require(ape)
   ## unpack trees_list
@@ -129,12 +134,13 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   ## 2: y_axis tree tree
   #########################
   par(mar = c(0, 0, 0, 0))
+  tree_edge_width <- 0.5
   ape::plot.phylo(y_tree,
                   show.tip.label = FALSE,
                   no.margin = TRUE,
                   use.edge.length = FALSE,
                   edge.col = 'gray50',
-                  edge.width = .5)
+                  edge.width = tree_edge_width)
   if(!is.null(y_tree$label_nodes)) {
     ape::nodelabels(y_tree$label_nodes,
                     bg = 'white',
@@ -151,13 +157,15 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
     type_cols <-
       y_ave_resp[y_tree$tip.label, 'type_col'] %>%
       as.character
-  } else type_cols <- y_type_cols
+    tree_edge_width <- 2
+  } else { type_cols <- y_type_cols }
+
   segments(rep(bx1, nrow(mat)),
            1:nrow(mat),
            rep(bx2, nrow(mat)),
            1:nrow(mat),
            col = type_cols,
-           lwd = 2,
+           lwd = tree_edge_width,
            lend = 'square')
 
 
@@ -175,6 +183,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
       stop('Make sure x_tree_col is either length=1 or length=edge.length')
     }
   }
+
   ape::plot.phylo(x_tree,
                   show.tip.label = FALSE,
                   no.margin = TRUE,
@@ -254,6 +263,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   }
   v_max <- (max(v) * 2)
   blank_plot(x.lim = c(1, ncol(mat)),
+             y.lim = c(0-x_space, 1),
              x.axs = 'r')
   cols <- cols_pn$cols[match(x_ave_resp$x_pn, cols_pn$values)] %>% as.character
   segments((1:ncol(mat)),
@@ -263,8 +273,8 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
            col = cols,
            lwd = 4,
            lend = 'square')
-  ## white grid lines.
-  ax1 <- pretty(v)
+  ## white grid lines and axis.
+  ax1 <- pretty(v, 3)
   lax2 <- ((length(ax1)*5)-4)
   ax2 <- seq(ax1[1],
              ax1[length(ax1)],
@@ -274,7 +284,9 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
          lwd = .6)
   text((1:ncol(mat)) - 0.6,
        0.97 - v / v_max,
-       x_tree$tip.label,
+       sapply(x_tree$tip.label,
+              FUN='simple_cap') %>%
+         gsub('_', ' ', .),
        srt = 270,
        pos = 4,
        cex = .9,
@@ -296,8 +308,13 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
        col.ticks = 'gray50',
        tck = -.03,
        las = 1)
+
+  # Kill leading zero that doubles other axis zero
+  labax1 <- ax1
+  if(ax1[1] == 0) { labax1[1] <- '' }
+
   axis(4, at = (1-(ax1/v_max)),
-       labels = ax1,
+       labels = labax1,
        line = -1.8 + x_bar_axis_offset,
        col = 'gray50',
        col.ticks = 'gray50',
@@ -320,7 +337,8 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   }
   v_max <- max(y_ave_resp$ave_resp_abs) * 1.5
   par(mar = c(0, 0, 0, 1))
-  blank_plot(y.lim = c(1, nrow(mat)),
+  blank_plot(x.lim = c(0, 1+y_space),
+             y.lim = c(1, nrow(mat)),
              y.axs = 'r')
   cols <- cols_pn$cols[match(y_ave_resp$y_pn, cols_pn$values)] %>% as.character
   segments(rep(0, nrow(mat)),
@@ -332,7 +350,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
            lend = 'square')
 
   ## white grid lines.
-  ax1 <- pretty(v)
+  ax1 <- pretty(v, 3)
   lax2 <- ((length(ax1)*5)-4)
   ax2 <- seq(ax1[1], ax1[length(ax1)], length = lax2)
   # print(v)
@@ -346,7 +364,9 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
          lwd = .6)
   text((v / v_max),
        (1:nrow(mat)),
-       y_ave_resp$y_lab,
+       sapply(y_ave_resp$y_lab,
+              FUN='simple_cap')  %>%
+         gsub('_', ' ', .),
        pos = 4,
        cex = .9,
        col = cols)
@@ -400,7 +420,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
     #                  bg = 'gray97')
   } else {
 
-    text(.4, .85,
+    text(leg_text_pos, .85,
          'Average Effect Size',
          cex = 1.2,
          font = 2)

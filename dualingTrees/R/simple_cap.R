@@ -3,3 +3,6 @@ simple_cap <- function(x) {
   paste(toupper(substring(s, 1, 1)), substring(s, 2),
         sep = "", collapse = " ")
 }
+
+# x <- c('aaa', 'bbb', 'ccc')
+# sapply(x, FUN='simple_cap')

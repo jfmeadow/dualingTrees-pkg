@@ -14,10 +14,13 @@ plot_trees(trees_list,
            y_type_cols = 'gray30',
            x_bar_axis_offset = 0,
            y_bar_axis_offset = 0,
+           x_space = 0,
+           y_space = 0,
            pdf_filename = NULL,
            png_filename = NULL,
            w_inches = 11,
-           h_inches = 11)
+           h_inches = 11,
+           leg_text_pos = .5)
 
 }
 
@@ -31,11 +34,13 @@ plot_trees(trees_list,
 \item{y_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. }
 \item{x_bar_axis_offset}{ How far offet should the axis be from the edge of the barplot? }
 \item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }
+\item{x_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
+\item{y_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
 \item{pdf_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }
 \item{png_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }
 \item{w_inches}{Default = 11. Used for both pdf and png creation. }
 \item{h_inches}{Default = 11. Used for both pdf and png creation.}
-
+\item{leg_text_pos}{x positioning for the legend title. Ranges between 0 and 1. }
 }
 
 \examples{
