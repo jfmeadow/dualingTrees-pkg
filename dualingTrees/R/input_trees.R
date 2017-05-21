@@ -18,6 +18,10 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
   ## stupid cran hack.
   . <- combo <- ave_resp <- NULL
 
+  ## trim the trees to match the keys
+  y_tree %<>% prune_sample(y_key, .)
+  x_tree %<>% prune_sample(x_key, .)
+
   ## How many tips and how big is interaction matrix
   ny <- length(y_tree$tip.label)
   nx <- length(x_tree$tip.label)
@@ -66,9 +70,6 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
 
 
   # ---------------------------
-
-
-  ########## STOPPED HERE.
 
 
   ## Size of plotted bubbles. Scaled by the multipier and transform input
