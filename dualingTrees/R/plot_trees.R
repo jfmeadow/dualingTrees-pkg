@@ -54,38 +54,42 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
 
   ## Colors for x-axis types
   if(!is.null(x_ave_resp$type)) {
-    if(!is.null(x_type_cols)) {
-      if(length(x_type_cols) == dim(table(x_ave_resp$type))) {
-        xtc <- data.frame(types = levels(x_ave_resp$type),
-                          cols = x_type_cols)
-      } else {
-        stop('Make sure you supplied the right number of colors for x types.\n')
+    if(length(table(x_ave_resp$type)) > 1) {
+      if(!is.null(x_type_cols)) {
+        if(length(x_type_cols) == dim(table(x_ave_resp$type))) {
+          xtc <- data.frame(types = levels(x_ave_resp$type),
+                            cols = x_type_cols)
+        } else {
+          stop('Make sure you supplied the right number of colors for x types.\n')
+        }
       }
+      ## assign colors
+      x_ave_resp$type_col <- xtc$cols[match(x_ave_resp$type, xtc$types)]
+      ## output for user
+      cat('\n\nHere are the colors used for x types: \n')
+      print(xtc)
+      type <- TRUE
     }
-    ## assign colors
-    x_ave_resp$type_col <- xtc$cols[match(x_ave_resp$type, xtc$types)]
-    ## output for user
-    cat('\n\nHere are the colors used for x types: \n')
-    print(xtc)
-    type <- TRUE
   } else type <- FALSE
 
   ## Colors for y-axis types
   if(!is.null(y_ave_resp$type)) {
-    if(!is.null(y_type_cols)) {
-      if(length(y_type_cols) == dim(table(y_ave_resp$type))) {
-        ytc <- data.frame(types = levels(y_ave_resp$type),
-                          cols = y_type_cols)
-      } else {
-        stop('Make sure you supplied the right number of colors for y types.\n')
+    if(length(table(y_ave_resp$type)) > 1) {
+      if(!is.null(y_type_cols)) {
+        if(length(y_type_cols) == dim(table(y_ave_resp$type))) {
+          ytc <- data.frame(types = levels(y_ave_resp$type),
+                            cols = y_type_cols)
+        } else {
+          stop('Make sure you supplied the right number of colors for y-types.\n')
+        }
       }
+      ## assign colors
+      y_ave_resp$type_col <- ytc$cols[match(y_ave_resp$type, ytc$types)]
+      ## output for user
+      cat('\n\nHere are the colors used for y-types: \n')
+      print(ytc)
+      type <- TRUE
     }
-    ## assign colors
-    y_ave_resp$type_col <- ytc$cols[match(y_ave_resp$type, ytc$types)]
-    ## output for user
-    cat('\n\nHere are the colors used for y types: \n')
-    print(ytc)
-    type <- TRUE
   } else type <- FALSE
 
   if(!is.null(pdf_filename)) {
@@ -282,7 +286,8 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   abline(h = (1-(ax1/v_max)),
          col = 'white',
          lwd = .6)
-  text((1:ncol(mat)) - 0.6,
+  xoff <- (.6 * (ncol(mat) / 53))
+  text((1:ncol(mat)) - xoff,
        0.97 - v / v_max,
        sapply(x_tree$tip.label,
               FUN='simple_cap') %>%
@@ -436,28 +441,6 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   }
   if(dev) dev.off()
 }
-
-
-
-
-# ##############################################################
-# ## vector for x tree edge colors.
-# x_tree_cols <- rep('gray40', length(test$x_tree$edge.length))
-# x_tree_cols[1:65] <- '#b154a0'
-# x_tree_cols[66:94] <- '#51ad4f'
-# ##############################################################
-#
-#
-#
-# ##############################################################
-# plot_trees(trees_list = test,
-#            pn_cols = c('#409ab1', '#dd1d18'),
-#            x_tree_col = x_tree_cols,
-#            x_type_cols = c('#51ad4f', '#b154a0'),
-#            y_type_cols = c('#51ad4f', '#b154a0', '#5a1b1a'),
-#            pdf_filename = 'test.pdf')
-
-
 
 
 

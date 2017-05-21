@@ -30,8 +30,8 @@ plot_trees(trees_list,
 \item{pn_cols}{Colors for positive/negative values. The same colors are used for bubbles and margin barplots. Default colors are blue and red.  }
 \item{x_tree_col}{Color of the tree edges. Either supply a single color or a vector of colors that correspond to the edges in the tree. }
 \item{y_tree_col}{Color of the tree edges. Either supply a single color or a vector of colors that correspond to the edges in the tree. }
-\item{x_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. }
-\item{y_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. }
+\item{x_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. If types were entered in the \code{input_trees} function, then colors must be supplied here. }
+\item{y_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. If types were entered in the \code{input_trees} function, then colors must be supplied here. }
 \item{x_bar_axis_offset}{ How far offet should the axis be from the edge of the barplot? }
 \item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }
 \item{x_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
