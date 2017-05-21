@@ -127,4 +127,25 @@ And the result:
 ![](examples/ei_tree.png)
 
 
+------------
+
+
+#### A few recommendations for creating dualingTrees visualizations: 
+
+* This was built for a dataset that has ~300 y-axis tree tips and ~50 x-axis tree tips. 
+  Divergence from this will move around axes and text and whatnot. 
+  The plotting function has some built in axis movement arguments. 
+  If these don't fix it, contact the author or submit an issue. 
+* Look very carefully when using a new dataset to make sure the result makes sense. 
+  If you find a bug or something that looks wrong, contact the author or submit an issue. 
+* Each function has built in output for the user to make sure the result matches expectations. 
+  Pay close attention to assignment of colors and whatnot. 
+  If something is not as expected, contact the author or submit an issue. 
+
+
+
+
+
+
+
 
