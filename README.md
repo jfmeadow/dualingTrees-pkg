@@ -39,6 +39,9 @@ All other options are documented in the help files.
 
 The package consists of 2 main functions that must be run in series, as well as a few internal ancillary functions. The typical workflow might look like this: 
 
+*(Note: the example code will create a png into your current working directory)*
+
+
 ```
 library(dualingTrees)
 
@@ -67,20 +70,21 @@ plot_trees(
   y_bar_axis_offset = .6, 
   x_space = .3, 
   y_space = .5, 
-  png_filename = 'blup_trees.png', 
+  png_filename = 'blup_trees.png', ## Figure in your working dir ##
   w_inches = 8, 
   h_inches = 8, 
   leg_text_pos = .6)
 
 ```
 
-Which results in this figure:
-*(the example code will create a png into your current working directory)*
+Which results in this figure *(a png into your current working directory)*: 
 
 ![](examples/blup_trees.png)
 
 
 Here is another example, slightly more complex: 
+
+*(Note: the example code will create a png into your current working directory)*
 
 
 ```
@@ -118,7 +122,7 @@ plot_trees(
   y_type_cols = c('#51ad4f', '#b154a0', '#5a1b1a'),
   x_bar_axis_offset = .5, 
   y_bar_axis_offset = .5, 
-  png_filename = 'ei_tree.png', 
+  png_filename = 'ei_tree.png', ## Figure in your working dir ##
   leg_text_pos = .4)
   
 ```
