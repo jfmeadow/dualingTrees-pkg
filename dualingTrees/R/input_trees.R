@@ -13,7 +13,8 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
                         x_node_labs = NULL,   # Not currently used.
                         y_node_labs = NULL,   # vector of names to label as internal nodes. y_node_labs <- c('fabaceae', 'betulaceae', 'rosaceae', 'myrtaceae', 'asteraceae', 'poaceae', 'pinaceae')
                         bubble_scale = 5,     # multiplier for bubble size
-                        bubble_transform = NULL) {     # select tranformation for bubble scaling
+                        bubble_transform = NULL,      # select tranformation for bubble scaling
+                        pn_color_cutoff = 0) {        # cutoff for positive / negative coloring.
 
   ## stupid cran hack.
   . <- combo <- ave_resp <- NULL
@@ -103,8 +104,8 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
   ## Positive or negetive for plotting.
   ## set up test? Maybe not necessary
   mat_pn <- mat
-  mat_pn[mat > 0] <- 1
-  mat_pn[mat < 0] <- -1
+  mat_pn[mat > pn_color_cutoff] <- 1
+  mat_pn[mat < pn_color_cutoff] <- -1
 
   ## Grouped response values for marginal barplots.
   ## Ordered by the names in the matrix.

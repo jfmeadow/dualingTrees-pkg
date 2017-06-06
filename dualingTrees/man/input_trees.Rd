@@ -24,7 +24,8 @@ input_trees(x_tree = NULL,
             x_node_labs = NULL,
             y_node_labs = NULL,
             bubble_scale = 5,
-            bubble_transform = NULL)
+            bubble_transform = NULL,
+            pn_color_cutoff = 0)
 
 }
 
@@ -53,6 +54,7 @@ input_trees(x_tree = NULL,
   \item{y_node_labs}{Optional string of names corresponding to the named internal nodes of the y-axis tree. These will be shown at the node location on the y-tree. }
   \item{bubble_scale}{Scaling for the bubble size. If bubbles are too overlappy, decrease this. }
   \item{bubble_transform}{Additional scaleing input. Chose between \code{'log'} or \code{'sqrt'}. Bubbles are log scaled by default, and using 'log' will apply a second log transformation. }
+  \item{pn_color_cutoff}{Cutoff used for positive / negative coloring. Default = 0. The actual colors are supplied as an argument in \code{plot_trees()}.  }
 
 
 }

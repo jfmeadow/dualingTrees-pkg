@@ -20,7 +20,9 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                        png_filename = NULL,     # png_filename = 'test.png'
                        w_inches = 11,
                        h_inches = 11,
-                       leg_text_pos = .5) {
+                       leg_text_pos = .5,
+                       leg_title = 'Average Effect Size',
+                       pn_leg_labels = c('Positive', 'Negative')) {
 
   ## stupid cran hack.
   . <- NULL
@@ -426,12 +428,12 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   } else {
 
     text(leg_text_pos, .85,
-         'Average Effect Size',
+         leg_title,
          cex = 1.2,
          font = 2)
     par(lend = 'square')
     legend(.22, .8,
-           legend = c('Positive', 'Negative'),
+           legend = pn_leg_labels,
            lwd = 4,
            col = cols,
            bty = 'n',

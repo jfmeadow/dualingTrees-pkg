@@ -20,7 +20,9 @@ plot_trees(trees_list,
            png_filename = NULL,
            w_inches = 11,
            h_inches = 11,
-           leg_text_pos = .5)
+           leg_text_pos = .5,
+           leg_title = 'Average Effect Size',
+           pn_leg_labels = c('Positive', 'Negative'))
 
 }
 
@@ -41,6 +43,9 @@ plot_trees(trees_list,
 \item{w_inches}{Default = 11. Used for both pdf and png creation. }
 \item{h_inches}{Default = 11. Used for both pdf and png creation.}
 \item{leg_text_pos}{x positioning for the legend title. Ranges between 0 and 1. }
+\item{leg_title}{Label text for the legend title. Default = 'Average Effect Size'.  }
+\item{pn_leg_labels}{Vector of 2 strings used as legend labels for positive / negative colors. Default = c('Positive', 'Negative') }
+
 }
 
 \examples{
