@@ -140,9 +140,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
     dplyr::mutate(
       ave_resp_abs = abs(ave_resp),
       y_pn = dplyr::case_when(
-        .$ave_resp > 0 ~ 1,
-        .$ave_resp < 0 ~ -1,
-        .$ave_resp == 0 ~ 0)) %>%
+        .$ave_resp > pn_color_cutoff ~ 1,
+        .$ave_resp < pn_color_cutoff ~ -1,
+        .$ave_resp == pn_color_cutoff ~ 0)) %>%
     magrittr::set_rownames(.[, 1])
 
   ## get abs and pn for optional bar response
@@ -151,9 +151,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
       dplyr::mutate(
         bars_resp_abs = abs(response_y_bars),
         y_pn = dplyr::case_when(
-          .$response_y_bars > 0 ~ 1,
-          .$response_y_bars < 0 ~ -1,
-          .$response_y_bars == 0 ~ 0)) %>%
+          .$response_y_bars > pn_color_cutoff ~ 1,
+          .$response_y_bars < pn_color_cutoff ~ -1,
+          .$response_y_bars == pn_color_cutoff ~ 0)) %>%
       magrittr::set_rownames(.[, 1])
 
   }
@@ -190,9 +190,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
     dplyr::mutate(
       ave_resp_abs = abs(ave_resp),
       x_pn = dplyr::case_when(
-        .$ave_resp > 0 ~ 1,
-        .$ave_resp < 0 ~ -1,
-        .$ave_resp == 0 ~ 0)) %>%
+        .$ave_resp > pn_color_cutoff ~ 1,
+        .$ave_resp < pn_color_cutoff ~ -1,
+        .$ave_resp == pn_color_cutoff ~ 0)) %>%
     magrittr::set_rownames(.[, 1])
 
   ## get abs and pn for optional bar response
@@ -201,9 +201,9 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
       dplyr::mutate(
         bars_resp_abs = abs(response_x_bars),
         x_pn = dplyr::case_when(
-          .$response_x_bars > 0 ~ 1,
-          .$response_x_bars < 0 ~ -1,
-          .$response_x_bars == 0 ~ 0)) %>%
+          .$response_x_bars > pn_color_cutoff ~ 1,
+          .$response_x_bars < pn_color_cutoff ~ -1,
+          .$response_x_bars == pn_color_cutoff ~ 0)) %>%
       magrittr::set_rownames(.[, 1])
   }
 
