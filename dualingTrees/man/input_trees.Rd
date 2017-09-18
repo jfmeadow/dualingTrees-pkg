@@ -23,6 +23,8 @@ input_trees(x_tree = NULL,
             y_lab_cutoff = NULL,
             x_node_labs = NULL,
             y_node_labs = NULL,
+            x_node_cex = NULL,
+            y_node_cex = NULL,
             bubble_scale = 5,
             bubble_transform = NULL,
             pn_color_cutoff = 0)
@@ -52,6 +54,8 @@ input_trees(x_tree = NULL,
   Labels for the barplot (y-axis) above this cutoff are plotted. If a number too low is picked, the labels will be quite crowded. }
   \item{x_node_labs}{Not currently implemented. }
   \item{y_node_labs}{Optional string of names corresponding to the named internal nodes of the y-axis tree. These will be shown at the node location on the y-tree. }
+  \item{x_node_cex}{Not currently implemented. }
+  \item{y_node_cex}{Dataframe with numeric values as the first column that dictate the size of semitransparent bubbles on internal tree nodes. The at least one of the row names of the dataframe must exactly match at least one of the input names of the internal tree nodes. If they don't match, no bubbles will be plotted.  }
   \item{bubble_scale}{Scaling for the bubble size. If bubbles are too overlappy, decrease this. }
   \item{bubble_transform}{Additional scaleing input. Chose between \code{'log'} or \code{'sqrt'}. Bubbles are log scaled by default, and using 'log' will apply a second log transformation. }
   \item{pn_color_cutoff}{Cutoff used for positive / negative coloring. Default = 0. The actual colors are supplied as an argument in \code{plot_trees()}.  }

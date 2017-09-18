@@ -12,6 +12,8 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
                         y_lab_cutoff = NULL,  # Labels above this cutoff are drawn
                         x_node_labs = NULL,   # Not currently used.
                         y_node_labs = NULL,   # vector of names to label as internal nodes. y_node_labs <- c('fabaceae', 'betulaceae', 'rosaceae', 'myrtaceae', 'asteraceae', 'poaceae', 'pinaceae')
+                        x_node_cex = NULL,    # size of points behind label text. rownames must match some of the nodes
+                        y_node_cex = NULL,    # size of points behind label text. rownames must match some of the nodes
                         bubble_scale = 5,     # multiplier for bubble size
                         bubble_transform = NULL,      # select tranformation for bubble scaling
                         pn_color_cutoff = 0) {        # cutoff for positive / negative coloring.
@@ -295,6 +297,12 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
       sapply(x_tree$node.label[x_these], FUN=simple_cap)
   }
 
+  # ## Assign tree stat points to those labeled notes.
+  # if(!is.null(x_node_cex) & !is.null(x_node_labs)) {
+  #   x_tree$cex_nodes <- rep(0, x_tree$Nnode)
+  #   x_tree$cex_nodes <- data.frame(x_node_cex)[x_tree$node.label, 1]
+  # }
+
   if(!is.null(y_node_labs)) {
     y_these <-
       y_node_labs %>%
@@ -305,6 +313,13 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
       sapply(y_tree$node.label[y_these], FUN=simple_cap)
   }
 
+  if(!is.null(y_node_cex) & !is.null(y_node_labs)) {
+    y_tree$cex_nodes <- rep(0, y_tree$Nnode)
+    y_tree$cex_nodes <-
+      data.frame(y_node_cex)[y_tree$node.label, 1]
+    y_tree$cex_nodes[is.na(y_tree$cex_nodes)] <- 0
+    print(y_tree$cex_nodes)
+  }
 
   OUT <- list(x_tree = x_tree,
               y_tree = y_tree,

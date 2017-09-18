@@ -16,10 +16,13 @@ plot_trees(trees_list,
            y_bar_axis_offset = 0,
            x_space = 0,
            y_space = 0,
+           x_lab_cex = NULL,
+           y_lab_cex = 0.9,
            pdf_filename = NULL,
            png_filename = NULL,
            w_inches = 11,
            h_inches = 11,
+           tall_layout = FALSE,
            leg_text_pos = .5,
            leg_title = 'Average Effect Size',
            pn_leg_labels = c('Positive', 'Negative'))
@@ -38,10 +41,13 @@ plot_trees(trees_list,
 \item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }
 \item{x_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
 \item{y_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
+\item{x_lab_cex}{not currently implimented. }
+\item{y_lab_cex}{Size of the names plotted at the end of right hand bars. Default = 0.9. }
 \item{pdf_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }
 \item{png_filename}{Optional. If supplied, a file will be created. Otherwise it will appear in the R device. }
 \item{w_inches}{Default = 11. Used for both pdf and png creation. }
 \item{h_inches}{Default = 11. Used for both pdf and png creation.}
+\item{tall_layout}{If TRUE, the layout is adjusted to allow for more of a tall aspect ratio. Works well for large y-tree and small x_tree. Default = FALSE. }
 \item{leg_text_pos}{x positioning for the legend title. Ranges between 0 and 1. }
 \item{leg_title}{Label text for the legend title. Default = 'Average Effect Size'.  }
 \item{pn_leg_labels}{Vector of 2 strings used as legend labels for positive / negative colors. Default = c('Positive', 'Negative') }

@@ -16,10 +16,13 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                        y_bar_axis_offset = 0,
                        x_space = 0,
                        y_space = 0,
+                       x_lab_cex = NULL,
+                       y_lab_cex = 0.9,
                        pdf_filename = NULL,     # pdf_filename = 'test.pdf'
                        png_filename = NULL,     # png_filename = 'test.png'
                        w_inches = 11,
                        h_inches = 11,
+                       tall_layout = FALSE,
                        leg_text_pos = .5,
                        leg_title = 'Average Effect Size',
                        pn_leg_labels = c('Positive', 'Negative')) {
@@ -94,6 +97,15 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
     }
   } else type <- FALSE
 
+  ## colors for y node bubbles
+  if(!is.null(y_tree$cex_nodes)) {
+    y_tree$node_cols <-
+      dplyr::case_when( y_tree$cex_nodes == 0 ~ cols_pn[3,1],
+                        y_tree$cex_nodes > 0 ~ cols_pn[1,1],
+                        y_tree$cex_nodes < 0 ~ cols_pn[2,1] )
+
+  }
+
   if(!is.null(pdf_filename)) {
     grDevices::pdf(pdf_filename,
                    width = w_inches, height = h_inches)
@@ -106,14 +118,24 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
       dev <- TRUE
     } else dev <- FALSE
 
-  layout(matrix(c(1, 2, 3,
-                  4, 5, 6,
-                  7, 8, 9),
-                nrow = 3,
-                ncol = 3),
-         widths = c(1, 4, 1.5),
-         heights = c(1, 6.5, 1.5))
+  if( tall_layout ) {
+    layout(matrix(c(1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 9),
+                  nrow = 3,
+                  ncol = 3),
+           widths = c(1.5, 3, 2),
+           heights = c(1, 6.5, 1.5))
 
+  } else {
+    layout(matrix(c(1, 2, 3,
+                    4, 5, 6,
+                    7, 8, 9),
+                  nrow = 3,
+                  ncol = 3),
+           widths = c(1, 4, 1.5),
+           heights = c(1, 6.5, 1.5))
+  }
 
   #########################
   ## 1: blank top left corner
@@ -147,6 +169,14 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                   use.edge.length = FALSE,
                   edge.col = 'gray50',
                   edge.width = tree_edge_width)
+  if(!is.null(y_tree$cex_nodes)) {
+    print(abs(y_tree$cex_nodes))
+    ape::nodelabels(pch=16,
+                    cex = (abs(y_tree$cex_nodes) /
+                             max(abs(y_tree$cex_nodes))) * 3,
+                    col = scales::alpha(y_tree$node_cols, .4),
+                    adj = 1)
+  }
   if(!is.null(y_tree$label_nodes)) {
     ape::nodelabels(y_tree$label_nodes,
                     bg = 'white',
@@ -375,7 +405,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
               FUN='simple_cap')  %>%
          gsub('_', ' ', .),
        pos = 4,
-       cex = .9,
+       cex = y_lab_cex,
        col = cols)
   # print(y_ave_resp$y_lab)
   # print(v / v_max)
