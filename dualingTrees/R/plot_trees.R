@@ -159,7 +159,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   }
 
   #########################
-  ## 2: y_axis tree tree
+  ## 2: y_axis tree
   #########################
   par(mar = c(0, 0, 0, 0))
   tree_edge_width <- 0.5
@@ -178,7 +178,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                     adj = 1)
   }
   if(!is.null(y_tree$label_nodes)) {
-    ape::nodelabels(y_tree$label_nodes,
+    ape::nodelabels(paste0(y_tree$label_nodes, '   '),
                     bg = 'white',
                     adj = 1,
                     frame = 'none')
@@ -318,7 +318,13 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   abline(h = (1-(ax1/v_max)),
          col = 'white',
          lwd = .6)
-  xoff <- (.6 * (ncol(mat) / 53))
+
+  if(tall_layout) {
+    xoff <- ((ncol(mat) / 53))
+  } else {
+    xoff <- (.6 * (ncol(mat) / 53))
+  }
+
   text((1:ncol(mat)) - xoff,
        0.97 - v / v_max,
        sapply(x_tree$tip.label,
@@ -332,15 +338,24 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
       col.axis = 'gray50',
       fg = 'gray50')
   ## axis for barplot.
+
+  if(tall_layout) {
+    x_ax_baseline <- -.7
+    x_ax_txt_baseline <- -.8
+  } else {
+    x_ax_baseline <- -1.5
+    x_ax_txt_baseline <- -1.8
+  }
+
   axis(4, at = (1-(ax2/v_max)),
        labels = FALSE,
-       line = -1.5 + x_bar_axis_offset,
+       line = x_ax_baseline + x_bar_axis_offset,
        col = 'gray50',
        col.ticks = 'gray50',
        tck = -.01)
   axis(4, at = (1-(ax1/v_max)),
        labels = FALSE,
-       line = -1.5 + x_bar_axis_offset,
+       line = x_ax_baseline + x_bar_axis_offset,
        col = 'gray50',
        col.ticks = 'gray50',
        tck = -.03,
@@ -352,7 +367,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
 
   axis(4, at = (1-(ax1/v_max)),
        labels = labax1,
-       line = -1.8 + x_bar_axis_offset,
+       line = x_ax_txt_baseline + x_bar_axis_offset,
        col = 'gray50',
        col.ticks = 'gray50',
        tck = 0,
@@ -427,8 +442,14 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
        col.ticks = 'gray50',
        tck = -.03,
        las = 1)
+
+  ax_labs <- ax1
+  if(tall_layout) {
+    ax_labs[1] <- ''
+  }
+
   axis(1, at = (ax1/v_max),
-       labels = ax1,
+       labels = ax_labs,
        line = -2.3 + y_bar_axis_offset,
        col = 'gray50',
        col.ticks = 'gray50',
@@ -457,12 +478,19 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
     #                  bg = 'gray97')
   } else {
 
-    text(leg_text_pos, .85,
+    if(tall_layout) {
+      leg_text_pos_vert <- .7
+      leg_text_pos <- leg_text_pos -.05
+    } else {
+      leg_text_pos_vert <- .75
+    }
+
+    text(leg_text_pos, leg_text_pos_vert + .08,
          leg_title,
          cex = 1.2,
          font = 2)
     par(lend = 'square')
-    legend(.22, .8,
+    legend(.22, leg_text_pos_vert,
            legend = pn_leg_labels,
            lwd = 4,
            col = cols,
