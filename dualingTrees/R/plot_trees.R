@@ -1,17 +1,15 @@
 
 
-## To Do:
-##   test with sim data
-##   save data. Maybe shuffle values?
-##   write tests
-##   gh
-
 plot_trees <- function(trees_list,              # trees_list = OUT  # list from input_trees()
                        pn_cols = c('cornflowerblue', 'tomato'),   # colors for positive and negative, resp.
                        x_tree_col = 'gray30',   # must still add in cols for diff groups.
                        y_tree_col = 'gray30',   # must still add in cols for diff groups.
                        x_type_cols = 'gray30',      # vector of length types. see output from input function
                        y_type_cols = 'gray30',      # vector of length types. see output from input function
+                       x_edge_width = 2,      # width of branches on left tree
+                       y_edge_width = .5,        # width of branches on top tree
+                       x_tip_width = 2,         # width of bars at left tree tips
+                       y_tip_width = 2,         # width of bars at top tree tips
                        x_bar_axis_offset = 0,
                        y_bar_axis_offset = 0,
                        x_space = 0,
@@ -162,13 +160,13 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   ## 2: y_axis tree
   #########################
   par(mar = c(0, 0, 0, 0))
-  tree_edge_width <- 0.5
+  # tree_edge_width <- 0.5
   ape::plot.phylo(y_tree,
                   show.tip.label = FALSE,
                   no.margin = TRUE,
                   use.edge.length = FALSE,
                   edge.col = 'gray50',
-                  edge.width = tree_edge_width)
+                  edge.width = y_edge_width)
   if(!is.null(y_tree$cex_nodes)) {
     print(abs(y_tree$cex_nodes))
     ape::nodelabels(pch=16,
@@ -193,7 +191,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
     type_cols <-
       y_ave_resp[y_tree$tip.label, 'type_col'] %>%
       as.character
-    tree_edge_width <- 2
+    # tree_edge_width <- 2
   } else { type_cols <- y_type_cols }
 
   segments(rep(bx1, nrow(mat)),
@@ -201,7 +199,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
            rep(bx2, nrow(mat)),
            1:nrow(mat),
            col = type_cols,
-           lwd = tree_edge_width,
+           lwd = y_tip_width,
            lend = 'square')
 
 
@@ -225,7 +223,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                   no.margin = TRUE,
                   direction = 'downwards',
                   edge.color = x_tree_col,
-                  edge.width = 2,
+                  edge.width = x_edge_width,
                   use.edge.length = FALSE)
 
   ## Colored bars at tree tips
@@ -244,7 +242,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
            1:ncol(mat),
            rep(by2, ncol(mat)),
            col=type_cols,
-           lwd = 2,
+           lwd = x_tip_width,
            lend = 'square')
 
 
@@ -482,7 +480,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
       leg_text_pos_vert <- .7
       leg_text_pos <- leg_text_pos -.05
     } else {
-      leg_text_pos_vert <- .75
+      leg_text_pos_vert <- .7
     }
 
     text(leg_text_pos, leg_text_pos_vert + .08,

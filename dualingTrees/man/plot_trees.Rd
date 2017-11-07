@@ -12,6 +12,10 @@ plot_trees(trees_list,
            y_tree_col = 'gray30',
            x_type_cols = 'gray30',
            y_type_cols = 'gray30',
+           x_edge_width = 0.5,
+           y_edge_width = 2,
+           x_tip_width = 2,
+           y_tip_width = 2,
            x_bar_axis_offset = 0,
            y_bar_axis_offset = 0,
            x_space = 0,
@@ -37,6 +41,10 @@ plot_trees(trees_list,
 \item{y_tree_col}{Color of the tree edges. Either supply a single color or a vector of colors that correspond to the edges in the tree. }
 \item{x_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. If types were entered in the \code{input_trees} function, then colors must be supplied here. }
 \item{y_type_cols}{Colors for the short bars at the tree tips. The types correspond to \code{response_type} entered in the \code{input_trees} function. This function will return color choices just to make sure they line up as you expected. If types were entered in the \code{input_trees} function, then colors must be supplied here. }
+\item{x_edge_width}{Width of branches on left tree.}
+\item{y_edge_width}{Width of branches on top tree.}
+\item{x_tip_width}{Width of bars at left tree tips.}
+\item{y_tip_width}{Width of bars at top tree tips.}
 \item{x_bar_axis_offset}{ How far offet should the axis be from the edge of the barplot? }
 \item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }
 \item{x_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
