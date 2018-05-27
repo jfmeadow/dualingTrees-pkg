@@ -18,6 +18,8 @@ plot_trees(trees_list,
            y_tip_width = 2,
            x_bar_axis_offset = 0,
            y_bar_axis_offset = 0,
+           x_tip_connect_length = .065,
+           y_tip_connect_length = .1,
            x_space = 0,
            y_space = 0,
            x_lab_cex = NULL,
@@ -47,6 +49,8 @@ plot_trees(trees_list,
 \item{y_tip_width}{Width of bars at top tree tips.}
 \item{x_bar_axis_offset}{ How far offet should the axis be from the edge of the barplot? }
 \item{y_bar_axis_offset}{How far offet should the axis be from the edge of the barplot? }
+\item{x_tip_connect_length}{ Adjust length of the tiny lines that connect tree tips to the central interaction matrix margins. Must be between 0 and 1. Default = 0.065 }
+\item{y_tip_connect_length}{Adjust length of the tiny lines that connect tree tips to the central interaction matrix margins. Must be between 0 and 1. Default = 0.1 }
 \item{x_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
 \item{y_space}{Extra room for adding names to barplots. A value here of \code{x_space = .5} will add 50\% more room to the edge of the bars for name plotting. }
 \item{x_lab_cex}{not currently implimented. }

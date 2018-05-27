@@ -318,7 +318,7 @@ input_trees <- function(x_tree = NULL,     # x_tree = f_phylo
     y_tree$cex_nodes <-
       data.frame(y_node_cex)[y_tree$node.label, 1]
     y_tree$cex_nodes[is.na(y_tree$cex_nodes)] <- 0
-    print(y_tree$cex_nodes)
+    # print(y_tree$cex_nodes)
   }
 
   OUT <- list(x_tree = x_tree,

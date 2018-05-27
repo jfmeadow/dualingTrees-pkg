@@ -12,6 +12,8 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                        y_tip_width = 2,         # width of bars at top tree tips
                        x_bar_axis_offset = 0,
                        y_bar_axis_offset = 0,
+                       x_tip_connect_length = .065,    # length of extra line connecting the top tree to the matrix
+                       y_tip_connect_length = .1,    # length of extra line connecting the left tree to the matrix
                        x_space = 0,
                        y_space = 0,
                        x_lab_cex = NULL,
@@ -168,7 +170,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
                   edge.col = 'gray50',
                   edge.width = y_edge_width)
   if(!is.null(y_tree$cex_nodes)) {
-    print(abs(y_tree$cex_nodes))
+    # print(abs(y_tree$cex_nodes))
     ape::nodelabels(pch=16,
                     cex = (abs(y_tree$cex_nodes) /
                              max(abs(y_tree$cex_nodes))) * 3,
@@ -183,7 +185,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
   }
   ## Colored bars at tree tips
   u <- par()$usr
-  bx1 <- (u[2] - u[1]) * .9
+  bx1 <- (u[2] - u[1]) * (1-y_tip_connect_length)
   bx2 <- u[2]
   # print(bx1); print(bx2)
 
@@ -228,7 +230,7 @@ plot_trees <- function(trees_list,              # trees_list = OUT  # list from 
 
   ## Colored bars at tree tips
   u <- par()$usr
-  by1 <- u[3] + ((u[4] - u[3]) * .065)
+  by1 <- u[3] + ((u[4] - u[3]) * x_tip_connect_length)
   by2 <- u[3]
   # print(u); print(by1); print(by2)
 
